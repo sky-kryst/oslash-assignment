@@ -2,17 +2,30 @@ interface IProps {
   children: string;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
-  type?: "button" | "submit" | "reset";
+  buttonType?: "button" | "submit" | "reset";
+  type: "primary" | "outlined" | "secondary" | "flat";
+  disabled?: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Button: React.FC<IProps> = ({
   children,
   leftIcon,
   rightIcon,
-  type = "button",
+  buttonType = "button",
+  onClick,
+  type,
 }) => {
   return (
-    <button {...{ type }}>
+    <button
+      {...{ type: buttonType, onClick }}
+      className={`
+    ${type === "primary" ? `` : ""}
+    ${type === "outlined" ? `` : ""}
+    ${type === "secondary" ? `` : ""}
+    ${type === "flat" ? `` : ""}
+    `}
+    >
       {leftIcon && <span>{leftIcon}</span>}
       <span>{children}</span>
       {rightIcon && <span>{rightIcon}</span>}
