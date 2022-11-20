@@ -1,8 +1,9 @@
+import { Button } from "./components";
 
 function App() {
   return (
     <div className="h-full w-full">
-      <button>Share</button>
+      <Button>Share</Button>
     </div>
   );
 }
