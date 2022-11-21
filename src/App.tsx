@@ -1,4 +1,4 @@
-import { Button, Popover } from "./components";
+import { Button, Card, Popover } from "./components";
 
 function App() {
   return (
@@ -9,7 +9,9 @@ function App() {
             <Button label="Share" />
           </Popover.Target>
           <Popover.Content>
-            <h1>Hi, I'm here</h1>
+            <Card>
+              <h1>Hi, I'm here</h1>
+            </Card>
           </Popover.Content>
         </Popover>
       </div>

@@ -45,7 +45,7 @@ Popover.Content = ({ children }: IChildProps) => {
         className="fixed top-0 left-0 h-screen w-screen"
         onClick={() => setIsVisible(false)}
       ></div>
-      <div className="z-20 h-fit w-fit">{children}</div>
+      <div className="z-20">{children}</div>
     </>
   ) : null;
 };
