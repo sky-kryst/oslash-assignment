@@ -1,7 +1,7 @@
 import styles from "./style.module.css";
 
 interface IProps {
-  isChecked: boolean;
+  isChecked?: boolean;
   onChange?: () => {};
 }
 
