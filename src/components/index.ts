@@ -5,3 +5,4 @@ export * from "./Box";
 export * from "./Divider";
 export * from './Typography'
 export * from "./Switch";
+export * from "./Input";
