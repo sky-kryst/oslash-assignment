@@ -35,8 +35,8 @@ export const Button: React.FC<IProps> = ({
     }
     ${
       type === "flat"
-        ? `text-gray-500 font-medium 
-           hover:bg-stone-100`
+        ? `text-gray-500 font-medium px-2 py-1
+           hover:bg-stone-200`
         : ""
     }
     ${
