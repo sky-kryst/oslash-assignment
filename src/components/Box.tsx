@@ -9,7 +9,7 @@ export const Box = ({ children, className, passive }: IProps) => {
     <div
       className={
         `w-full flex justify-between items-center px-2 ${
-          !!passive ? "bg-slate-200" : "bg-white"
+          !!passive ? "bg-gray-50" : "bg-white"
         }` +
           " " +
           className ?? ""
