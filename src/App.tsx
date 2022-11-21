@@ -1,4 +1,5 @@
-import { Button, Card, Popover } from "./components";
+import { GlobeSVG } from "./assets/SVGs";
+import { Box, Button, Card, Popover } from "./components";
 
 function App() {
   return (
@@ -10,7 +11,20 @@ function App() {
           </Popover.Target>
           <Popover.Content>
             <Card>
-              <h1>Hi, I'm here</h1>
+              <div className="w-96 flex flex-col justify-start items-stretch">
+                <Box className="h-12">
+                  <div className="flex justify-around items-center w-7/12 border border-black">
+                    <GlobeSVG />
+                    <div></div>
+                  </div>
+                </Box>
+                <Box>
+                  <></>
+                </Box>
+                <Box>
+                  <></>
+                </Box>
+              </div>
             </Card>
           </Popover.Content>
         </Popover>
