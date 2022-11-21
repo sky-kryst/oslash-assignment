@@ -3,7 +3,7 @@ import { Button, Card, Popover } from "./components";
 function App() {
   return (
     <div className="h-full w-full">
-      <div className="mt-12 ml-10">
+      <div className="absolute top-20 left-28">
         <Popover>
           <Popover.Target>
             <Button label="Share" />
