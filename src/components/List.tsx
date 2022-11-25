@@ -9,26 +9,24 @@ interface IChildProps {
 interface IProps<TItemData> {
   header?: React.ReactNode;
   data: Array<TItemData>;
-  item: (ItemData: TItemData) => React.ClassicElement<IChildProps>;
+  renderItem: (data: TItemData) => React.ReactNode;
   keyExtractor: (ItemData: TItemData) => string;
 }
 
 export const List = <TListItemData extends {}>({
   header,
   data,
-  item,
+  renderItem,
   keyExtractor,
 }: IProps<TListItemData>) => {
   return (
     <div className="flex flex-col h-fit w-full">
       {header ? <List.Item leftComp={header} /> : null}
-      {data.map((element) =>
-        item({
-          ...element,
-          key: keyExtractor(element),
-          highlightOnHover: false,
-        })
-      )}
+      {data.map((element) => (
+        <div key={keyExtractor(element)} className="h-fit w-full">
+          {renderItem(element)}
+        </div>
+      ))}
     </div>
   );
 };
@@ -44,10 +42,10 @@ List.Item = ({
     <div
       className={
         "w-full flex justify-between items-center px-2 py-1" +
-          " " +
-          className ?? "" + " " + highlightOnHover
-          ? `hover:${highlightColor ?? "bg-slate-100"}`
-          : ""
+        " " +
+        (highlightOnHover ? `hover:${highlightColor ?? "bg-slate-100"}` : "") +
+        " " +
+        (className ?? "")
       }
     >
       {leftComp}
