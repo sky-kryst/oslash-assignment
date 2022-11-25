@@ -1,4 +1,8 @@
-interface IChildProps {
+interface IChildProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   leftComp: React.ReactNode;
   rightComp?: React.ReactNode;
   className?: string;
