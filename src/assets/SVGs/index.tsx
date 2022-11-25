@@ -32,8 +32,6 @@ export const GlobeSVG = (props: IProps) => {
   );
 };
 
-import React from "react";
-
 export const LinkSVG = (props: IProps) => {
   return (
     <svg
@@ -58,13 +56,31 @@ export const QuestionSVG = (props: IProps) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-4 h-4"
       {...props}
     >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+      />
+    </svg>
+  );
+};
+
+export const EmptyBoxSVG = (props: IProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      className="w-5 h-5"
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        d="M1 11.27c0-.246.033-.492.099-.73l1.523-5.521A2.75 2.75 0 015.273 3h9.454a2.75 2.75 0 012.651 2.019l1.523 5.52c.066.239.099.485.099.732V15a2 2 0 01-2 2H3a2 2 0 01-2-2v-3.73zm3.068-5.852A1.25 1.25 0 015.273 4.5h9.454a1.25 1.25 0 011.205.918l1.523 5.52c.006.02.01.041.015.062H14a1 1 0 00-.86.49l-.606 1.02a1 1 0 01-.86.49H8.236a1 1 0 01-.894-.553l-.448-.894A1 1 0 006 11H2.53l.015-.062 1.523-5.52z"
+        clipRule="evenodd"
       />
     </svg>
   );
