@@ -1,6 +1,7 @@
 interface IChildProps {
   leftComp: React.ReactNode;
   rightComp?: React.ReactNode;
+  className?: string;
 }
 
 interface IProps<TItemData> {
@@ -24,9 +25,15 @@ export const List = <TListItemData extends {}>({
   );
 };
 
-List.Item = ({ leftComp, rightComp }: IChildProps) => {
+List.Item = ({ leftComp, rightComp, className }: IChildProps) => {
   return (
-    <div className="w-full flex justify-between items-center px-2 py-1 hover:bg-slate-100">
+    <div
+      className={
+        "w-full flex justify-between items-center px-2 py-1 hover:bg-slate-100" +
+          " " +
+          className ?? ""
+      }
+    >
       {leftComp}
       {rightComp ?? null}
     </div>
