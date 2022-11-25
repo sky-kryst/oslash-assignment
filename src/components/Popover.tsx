@@ -2,6 +2,7 @@ import React, { cloneElement, useContext, useState } from "react";
 
 interface IPopoverProps {
   children: React.ReactNode[] | React.ReactNode;
+  actionOnUnmount?: Function;
 }
 interface ITargetProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
@@ -52,7 +53,7 @@ Popover.Target = ({ children, triggerEvent }: ITargetProps) => {
   });
 };
 
-Popover.Content = ({ children }: IPopoverProps) => {
+Popover.Content = ({ children, actionOnUnmount }: IPopoverProps) => {
   const { isVisible, setIsVisible, popoverCount, setPopoverCount } =
     useContext(PopoverContext);
 
@@ -63,6 +64,7 @@ Popover.Content = ({ children }: IPopoverProps) => {
         onClick={() => {
           setPopoverCount((prevState) => prevState - 1);
           setIsVisible(false);
+          actionOnUnmount && actionOnUnmount();
         }}
       ></div>
       <div className={`z-${popoverCount * 10} absolute top-0`}>{children}</div>
