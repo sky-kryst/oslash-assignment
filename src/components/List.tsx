@@ -22,7 +22,13 @@ export const List = <TListItemData extends {}>({
   return (
     <div className="flex flex-col h-fit w-full">
       {header ? <List.Item leftComp={header} /> : null}
-      {data.map((element) => item({ ...element, key: keyExtractor(element) }))}
+      {data.map((element) =>
+        item({
+          ...element,
+          key: keyExtractor(element),
+          highlightOnHover: false,
+        })
+      )}
     </div>
   );
 };
