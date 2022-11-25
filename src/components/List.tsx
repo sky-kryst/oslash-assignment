@@ -4,21 +4,21 @@ interface IChildProps {
 }
 
 interface IProps<TItemData> {
-  headerText?: string;
+  header?: React.ReactNode;
   data: Array<TItemData>;
   item: (ItemData: TItemData) => React.ClassicElement<IChildProps>;
   keyExtractor: (ItemData: TItemData) => string;
 }
 
 export const List = <TListItemData extends {}>({
-  headerText,
+  header,
   data,
   item,
   keyExtractor,
 }: IProps<TListItemData>) => {
   return (
-    <div>
-      {headerText ? <List.Item leftComp={<div>{headerText}</div>} /> : null}
+    <div className="flex flex-col h-fit w-full">
+      {header ? <List.Item leftComp={header} /> : null}
       {data.map((element) => item({ ...element, key: keyExtractor(element) }))}
     </div>
   );
@@ -26,7 +26,7 @@ export const List = <TListItemData extends {}>({
 
 List.Item = ({ leftComp, rightComp }: IChildProps) => {
   return (
-    <div>
+    <div className="w-full flex justify-between items-center px-2 py-1 hover:bg-slate-100">
       {leftComp}
       {rightComp ?? null}
     </div>
