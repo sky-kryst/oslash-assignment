@@ -21,7 +21,7 @@ export const List = <TListItemData extends {}>({
 }: IProps<TListItemData>) => {
   return (
     <div className="flex flex-col h-fit w-full">
-      {header ? <List.Item leftComp={header} /> : null}
+      {header ? <List.Item leftComp={header} highlightOnHover={false} /> : null}
       {data.map((element) => (
         <div key={keyExtractor(element)} className="h-fit w-full">
           {renderItem(element)}
