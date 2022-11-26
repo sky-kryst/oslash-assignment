@@ -1,4 +1,11 @@
-import React, { cloneElement, useContext, useEffect, useState } from "react";
+import React, {
+  cloneElement,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 
 interface ITargetProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
@@ -37,12 +44,6 @@ export const Popover = ({ children }: IPopoverProps) => {
   );
 };
 
-interface IPopoverProps {
-  children: React.ReactNode[] | React.ReactNode;
-  actionOnUnmount?: Function;
-  actionOnMount?: Function;
-}
-
 Popover.Target = ({ children, triggerEvent }: ITargetProps) => {
   const { setIsVisible, setPopoverCount } = useContext(PopoverContext);
 
@@ -55,17 +56,14 @@ Popover.Target = ({ children, triggerEvent }: ITargetProps) => {
   });
 };
 
-Popover.Content = ({
-  children,
-  actionOnUnmount,
-  actionOnMount,
-}: IPopoverProps) => {
+interface IPopoverProps {
+  children: React.ReactNode[] | React.ReactNode;
+  actionOnUnmount?: Function;
+}
+
+Popover.Content = ({ children, actionOnUnmount }: IPopoverProps) => {
   const { isVisible, setIsVisible, popoverCount, setPopoverCount } =
     useContext(PopoverContext);
-
-  useEffect(() => {
-    actionOnMount && actionOnMount();
-  }, []);
 
   return isVisible ? (
     <>
