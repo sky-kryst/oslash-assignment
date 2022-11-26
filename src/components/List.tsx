@@ -43,6 +43,7 @@ List.Item = ({
   highlightColor,
   highlightOnHover = true,
   shouldBeHighlighted = false,
+  ...props
 }: IChildProps) => {
   return (
     <div
@@ -55,6 +56,7 @@ List.Item = ({
         " " +
         (shouldBeHighlighted ? `${highlightColor ?? "bg-slate-100"}` : "")
       }
+      {...props}
     >
       {leftComp}
       {rightComp ?? null}
