@@ -28,7 +28,7 @@ export const List = <TListItemData extends {}>({
     <ul className="flex flex-col h-fit w-full">
       {header ? <List.Item leftComp={header} highlightOnHover={false} /> : null}
       {data.map((element) => (
-        <li key={keyExtractor(element)} className="h-fit w-full">
+        <li key={keyExtractor(element)} className="h-fit w-full cursor-default">
           {renderItem(element)}
         </li>
       ))}
