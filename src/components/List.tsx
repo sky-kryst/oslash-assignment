@@ -8,6 +8,7 @@ interface IChildProps
   className?: string;
   highlightOnHover?: boolean;
   highlightColor?: string;
+  shouldBeHighlighted?: boolean;
 }
 
 interface IProps<TItemData> {
@@ -41,6 +42,7 @@ List.Item = ({
   className,
   highlightColor,
   highlightOnHover = true,
+  shouldBeHighlighted = false,
 }: IChildProps) => {
   return (
     <div
@@ -49,7 +51,9 @@ List.Item = ({
         " " +
         (highlightOnHover ? `hover:${highlightColor ?? "bg-slate-100"}` : "") +
         " " +
-        (className ?? "")
+        (className ?? "") +
+        " " +
+        (shouldBeHighlighted ? `${highlightColor ?? "bg-slate-100"}` : "")
       }
     >
       {leftComp}
