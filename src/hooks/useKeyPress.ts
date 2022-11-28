@@ -7,7 +7,7 @@ type TKeyActionConfig = {
 export const useKeyPress = (keyActionConfig: TKeyActionConfig) => {
   useEffect(() => {
     const keyupHandler = (event: KeyboardEvent) => {
-      const name = event.key;
+      const name = event.key.trim() || "Space";
       for (let key in keyActionConfig) {
         if (name === key) {
           const action = keyActionConfig[key];
