@@ -1,81 +1,74 @@
-import React, {
-  cloneElement,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { cloneElement, useContext, useState } from "react";
+import { useKeyPress } from "../hooks";
 
 interface ITargetProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   triggerEvent?: string;
 }
-
-const PopoverContext = React.createContext<{
+interface TPopoverContext {
   isVisible: boolean;
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  popoverCount: number;
-  setPopoverCount: React.Dispatch<React.SetStateAction<number>>;
-}>({
+}
+
+const PopoverContext = React.createContext<TPopoverContext>({
   isVisible: false,
   setIsVisible: () => {},
-  popoverCount: 0,
-  setPopoverCount: () => {},
 });
 
 export const Popover = ({ children }: IPopoverProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [popoverCount, setPopoverCount] = useState(0);
-
-  const { popoverCount: previousPopoverCount = 0 } = useContext(PopoverContext);
 
   return (
     <PopoverContext.Provider
       value={{
         isVisible,
         setIsVisible,
-        popoverCount: popoverCount + previousPopoverCount,
-        setPopoverCount,
       }}
     >
-      <>{children}</>
+      {children}
     </PopoverContext.Provider>
   );
 };
 
 Popover.Target = ({ children, triggerEvent }: ITargetProps) => {
-  const { setIsVisible, setPopoverCount } = useContext(PopoverContext);
+  const { setIsVisible } = useContext(PopoverContext);
 
   return cloneElement(children, {
     [triggerEvent ?? "onClick"]: (event: any) => {
       event?.preventDefault();
-      setPopoverCount((prevState) => prevState + 1);
       setIsVisible(true);
     },
   });
 };
 
-interface IPopoverProps {
+export interface IPopoverProps {
   children: React.ReactNode[] | React.ReactNode;
   actionOnUnmount?: Function;
 }
 
 Popover.Content = ({ children, actionOnUnmount }: IPopoverProps) => {
-  const { isVisible, setIsVisible, popoverCount, setPopoverCount } =
-    useContext(PopoverContext);
+  const { isVisible, setIsVisible } = useContext(PopoverContext);
+
+  useKeyPress(
+    {
+      Escape: () => {
+        setIsVisible(false);
+      },
+    },
+    []
+  );
 
   return isVisible ? (
     <>
       <div
         className="fixed top-0 left-0 h-screen w-screen"
         onClick={() => {
-          setPopoverCount((prevState) => prevState - 1);
+          // setPopoverCount((prevState) => prevState - 1);
           setIsVisible(false);
           actionOnUnmount && actionOnUnmount();
         }}
       ></div>
-      <div className={`z-${popoverCount * 10} absolute top-0`}>{children}</div>
+      <div className="z-10 absolute top-0">{children}</div>
     </>
   ) : null;
 };
