@@ -4,7 +4,10 @@ type TKeyActionConfig = {
   [key: string]: () => {} | null | boolean | undefined;
 };
 
-export const useKeyPress = (keyActionConfig: TKeyActionConfig) => {
+export const useKeyPress = (
+  keyActionConfig: TKeyActionConfig,
+  dependencyList?: Array<any>
+) => {
   useEffect(() => {
     const keyupHandler = (event: KeyboardEvent) => {
       const name = event.key.trim() || "Space";
@@ -25,5 +28,5 @@ export const useKeyPress = (keyActionConfig: TKeyActionConfig) => {
     return () => {
       document.removeEventListener("keyup", keyupHandler);
     };
-  }, []);
+  }, dependencyList ?? []);
 };
