@@ -8,3 +8,4 @@ export * from "./Popover";
 export * from "./Switch";
 export * from "./Typography";
 export * from "./Tag";
+export * from "./Dropdown";
