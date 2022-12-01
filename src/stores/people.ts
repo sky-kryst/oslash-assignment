@@ -1,12 +1,18 @@
 import create from "zustand";
+import { v4 as uuid } from "uuid";
+
 
 interface IPeopleStore {
-  people: Array<{ firstName: string; lastName?: string }>;
+  people: Array<{
+    id: string;
+    firstName: string;
+    lastName?: string;
+  }>;
 }
 
 export const usePeopleStore = create<IPeopleStore>((set) => ({
   people: [
-    { firstName: "Wade", lastName: "Cooper" },
-    { firstName: "Arlene", lastName: "Mccoy" },
+    { id: uuid(), firstName: "Wade", lastName: "Cooper" },
+    { id: uuid(), firstName: "Arlene", lastName: "Mccoy" },
   ],
 }));
