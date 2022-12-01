@@ -10,7 +10,7 @@ interface TPopoverContext {
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PopoverContext = React.createContext<TPopoverContext>({
+export const PopoverContext = React.createContext<TPopoverContext>({
   isVisible: false,
   setIsVisible: () => {},
 });
