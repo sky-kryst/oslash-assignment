@@ -15,8 +15,8 @@ interface IPageStore {
       };
     };
   };
-  removeAccessPermissionsFromPage: (id: string, pageName: string) => void;
-  addAccessPermissionsToPage: (
+  removeAccessPermissionFromPage: (id: string, pageName: string) => void;
+  addAccessPermissionToPage: (
     pageName: string,
     holderType: "groups" | "people",
     permission: TPageRightHolders
@@ -33,7 +33,7 @@ export const usePagesStore = create<IPageStore>((set) => ({
       },
     },
   },
-  removeAccessPermissionsFromPage: (id, pageName) =>
+  removeAccessPermissionFromPage: (id, pageName) =>
     set((state) => {
       const currentPage = state.pages[pageName];
       const people = currentPage.access.people.filter(
@@ -55,7 +55,7 @@ export const usePagesStore = create<IPageStore>((set) => ({
         },
       };
     }),
-  addAccessPermissionsToPage: (pageName, holderType, permission) =>
+  addAccessPermissionToPage: (pageName, holderType, permission) =>
     set((state) => {
       let holderArray = state.pages[pageName].access[holderType];
       let elementIndex = holderArray.findIndex(
