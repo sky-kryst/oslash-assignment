@@ -1,34 +1,20 @@
-import { GlobeSVG } from "./assets/SVGs";
-import { Box, Button, Card, Popover } from "./components";
+import { ShareSVG } from "./assets/SVGs";
+import { Button, Popover, ShareModal, ToastQueue } from "./components";
 
 function App() {
   return (
-    <div className="h-full w-full">
-      <div className="absolute top-20 left-28">
-        <Popover>
-          <Popover.Target>
-            <Button label="Share" />
-          </Popover.Target>
+    <div className="h-full w-full pt-6 pl-5">
+      <Popover>
+        <Popover.Target>
+          <Button label="Share" rightIcon={<ShareSVG />} />
+        </Popover.Target>
+        <div className="relative h-fit w-fit">
           <Popover.Content>
-            <Card>
-              <div className="w-96 flex flex-col justify-start items-stretch">
-                <Box className="h-12">
-                  <div className="flex justify-around items-center w-7/12 border border-black">
-                    <GlobeSVG />
-                    <div></div>
-                  </div>
-                </Box>
-                <Box>
-                  <></>
-                </Box>
-                <Box>
-                  <></>
-                </Box>
-              </div>
-            </Card>
+            <ShareModal pageName="currentPage"/>
           </Popover.Content>
-        </Popover>
-      </div>
+        </div>
+      </Popover>
+      <ToastQueue />
     </div>
   );
 }

@@ -9,3 +9,7 @@ export * from "./Switch";
 export * from "./Typography";
 export * from "./Tag";
 export * from "./Dropdown";
+export * from "./Toast";
+export * from "./ToastQueue";
+export * from "./ShareModal";
+export * from "./PagePermissionsDropdown";

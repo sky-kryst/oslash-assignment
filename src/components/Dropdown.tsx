@@ -45,7 +45,7 @@ const DropdownOptions = <GOption extends TOption>({
   const { setIsVisible } = useContext(PopoverContext);
 
   return (
-    <Card className="rounded-xs bg-white">
+    <Card className="rounded-xs bg-white overflow-visible">
       <div className="w-40 h-fit flex flex-col justify-evenly items-center my-1">
         {options.map((option) => {
           return (

@@ -26,8 +26,8 @@ export const Input = React.forwardRef(
       <div
         className={
           "border border-slate-300 hover:border-blue-300 rounded-md flex items-stretch overflow-hidden h-10" +
-            " " +
-            containerClasses ?? ""
+          " " +
+          (containerClasses ?? "")
         }
       >
         {leftButton ?? null}

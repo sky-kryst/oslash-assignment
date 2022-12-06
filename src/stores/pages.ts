@@ -5,7 +5,7 @@ type TPageRightHolders = {
   access: TAccess;
 };
 
-type TEntity = "groups" | "people";
+type TEntity = "groups" | "people" | "workspaces";
 
 interface IPageStore {
   pages: {
@@ -59,6 +59,10 @@ export const usePagesStore = create<IPageStore>((set) => ({
       const groups = currentPage.access.groups.filter(
         (element) => element.id !== id
       );
+      const workspaces = currentPage.access.workspaces.filter(
+        (element) => element.id !== id
+      );
+
       return {
         pages: {
           ...state.pages,
@@ -66,7 +70,7 @@ export const usePagesStore = create<IPageStore>((set) => ({
             access: {
               people,
               groups,
-              workspaces: currentPage.access.workspaces,
+              workspaces,
             },
           },
         },
