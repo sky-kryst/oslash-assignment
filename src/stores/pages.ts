@@ -21,6 +21,11 @@ interface IPageStore {
     holderType: "groups" | "people",
     permission: TPageRightHolders
   ) => void;
+  addAccessPermissionsToPage: (
+    pageName: string,
+    holderType: "groups" | "people",
+    permissions: Array<TPageRightHolders>
+  ) => void;
 }
 
 export const usePagesStore = create<IPageStore>((set) => ({
@@ -81,4 +86,33 @@ export const usePagesStore = create<IPageStore>((set) => ({
         },
       };
     }),
+  addAccessPermissionsToPage(pageName, holderType, permissions) {
+    set((state) => {
+      let holderArray = state.pages[pageName].access[holderType];
+      permissions.forEach((permission) => {
+        let elementIndex = holderArray.findIndex(
+          (element) => element.id === permission.id
+        );
+
+        if (elementIndex > -1) {
+          holderArray[elementIndex] = permission;
+        } else {
+          holderArray.push(permission);
+        }
+      });
+
+      return {
+        pages: {
+          ...state.pages,
+          [pageName]: {
+            ...state.pages[pageName],
+            access: {
+              ...state.pages[pageName].access,
+              [holderType]: holderArray,
+            },
+          },
+        },
+      };
+    });
+  },
 }));
