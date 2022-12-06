@@ -49,21 +49,17 @@ export interface IPopoverProps {
 Popover.Content = ({ children, actionOnUnmount }: IPopoverProps) => {
   const { isVisible, setIsVisible } = useContext(PopoverContext);
 
-  useKeyPress(
-    {
-      Escape: () => {
-        setIsVisible(false);
-      },
+  useKeyPress({
+    Escape: () => {
+      setIsVisible(false);
     },
-    []
-  );
+  });
 
   return isVisible ? (
     <>
       <div
         className="fixed top-0 left-0 h-screen w-screen"
         onClick={() => {
-          // setPopoverCount((prevState) => prevState - 1);
           setIsVisible(false);
           actionOnUnmount && actionOnUnmount();
         }}
