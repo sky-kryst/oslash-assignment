@@ -1,12 +1,15 @@
 import { v4 as uuid } from "uuid";
 import create from "zustand";
 
+
+export type TWorkspace = {
+  id: string;
+  name: string;
+  noOfMembers: number;
+};
+
 interface IWorkspacesStore {
-  workspaces: Array<{
-    id: string;
-    name: string;
-    noOfMembers: number;
-  }>;
+  workspaces: Array<TWorkspace>;
 }
 
 export const useWorkspacesStore = create<IWorkspacesStore>((set) => ({
