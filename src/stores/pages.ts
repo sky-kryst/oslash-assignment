@@ -5,6 +5,8 @@ type TPageRightHolders = {
   access: TAccess;
 };
 
+type TEntity = "groups" | "people";
+
 interface IPageStore {
   pages: {
     [name: string]: {
@@ -16,14 +18,19 @@ interface IPageStore {
     };
   };
   removeAccessPermissionFromPage: (id: string, pageName: string) => void;
+  removePermissionFromPageOfEntity: (
+    pageName: string,
+    entityType: TEntity,
+    id: string
+  ) => void;
   addAccessPermissionToPage: (
     pageName: string,
-    holderType: "groups" | "people",
+    holderType: TEntity,
     permission: TPageRightHolders
   ) => void;
   addAccessPermissionsToPage: (
     pageName: string,
-    holderType: "groups" | "people",
+    holderType: TEntity,
     permissions: Array<TPageRightHolders>
   ) => void;
 }
@@ -113,6 +120,15 @@ export const usePagesStore = create<IPageStore>((set) => ({
           },
         },
       };
+    });
+  },
+  removePermissionFromPageOfEntity: (pageName, entityType, id) => {
+    set((state) => {
+      state.pages[pageName].access[entityType].filter(
+        (permission) => permission.id != id
+      );
+
+      return state;
     });
   },
 }));
