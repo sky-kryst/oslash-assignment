@@ -33,6 +33,11 @@ interface IPageStore {
     entityType: TEntity,
     permissions: Array<TPageRightHolders>
   ) => void;
+  updatePermissionOfEntityFromPage: (
+    pageName: string,
+    entityType: TEntity,
+    permission: TPageRightHolders
+  ) => void;
 }
 
 export const usePagesStore = create<IPageStore>((set) => ({
@@ -130,5 +135,26 @@ export const usePagesStore = create<IPageStore>((set) => ({
 
       return state;
     });
+  },
+  updatePermissionOfEntityFromPage(pageName, entityType, permission) {
+    if (permission.access === "Remove") {
+      this.removePermissionFromPageOfEntity(
+        pageName,
+        entityType,
+        permission.id
+      );
+    } else {
+      set((state) => {
+        const entityIndex = state.pages[pageName].access[entityType].findIndex(
+          (element) => element.id == permission.id
+        );
+
+        if (entityIndex > -1) {
+          state.pages[pageName].access[entityType][entityIndex] = permission;
+        }
+
+        return state;
+      });
+    }
   },
 }));
