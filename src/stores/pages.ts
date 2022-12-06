@@ -1,4 +1,5 @@
 import create from "zustand";
+import { useWorkspacesStore } from "./workspaces";
 
 type TPageRightHolders = {
   id: string;
@@ -46,7 +47,12 @@ export const usePagesStore = create<IPageStore>((set) => ({
       access: {
         people: [],
         groups: [],
-        workspaces: [{ id: "", access: "No access" }],
+        workspaces: [
+          {
+            id: useWorkspacesStore.getState().workspaces[0].id,
+            access: "No access",
+          },
+        ],
       },
     },
   },
