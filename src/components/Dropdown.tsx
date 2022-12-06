@@ -23,7 +23,7 @@ export const Dropdown = <GOption extends TOption>({
     <Popover>
       <div className="flex flex-col">
         <Popover.Target>
-          <div className="text-xs flex justify-between items-center text-stone-500">
+          <div className="text-xs min-h-[2rem] px-2 rounded-md flex justify-between items-center text-stone-500 hover:bg-black hover:bg-opacity-5">
             {selected.label}
             <ChevronDownSVG className="text-slate-900 w-5 h-5" />
           </div>
