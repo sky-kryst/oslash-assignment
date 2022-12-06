@@ -93,7 +93,7 @@ export const ShareModal: React.FC<IProps> = ({ pageName }) => {
 
   return (
     <Popover>
-      <Card className="absolute left-0 right-0 sm:static m-auto sm:mx-0">
+      <Card className="absolute left-0 right-0 sm:static m-auto sm:mx-0 overflow-visible">
         <div className="w-100 flex flex-col justify-start items-stretch">
           <Box className="h-12">
             <div className="flex items-center w-2/3">
