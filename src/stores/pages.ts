@@ -25,12 +25,12 @@ interface IPageStore {
   ) => void;
   addAccessPermissionToPage: (
     pageName: string,
-    holderType: TEntity,
+    entityType: TEntity,
     permission: TPageRightHolders
   ) => void;
   addAccessPermissionsToPage: (
     pageName: string,
-    holderType: TEntity,
+    entityType: TEntity,
     permissions: Array<TPageRightHolders>
   ) => void;
 }
@@ -67,9 +67,9 @@ export const usePagesStore = create<IPageStore>((set) => ({
         },
       };
     }),
-  addAccessPermissionToPage: (pageName, holderType, permission) =>
+  addAccessPermissionToPage: (pageName, entityType, permission) =>
     set((state) => {
-      let holderArray = state.pages[pageName].access[holderType];
+      let holderArray = state.pages[pageName].access[entityType];
       let elementIndex = holderArray.findIndex(
         (element) => element.id === permission.id
       );
@@ -87,15 +87,15 @@ export const usePagesStore = create<IPageStore>((set) => ({
             ...state.pages[pageName],
             access: {
               ...state.pages[pageName].access,
-              [holderType]: holderArray,
+              [entityType]: holderArray,
             },
           },
         },
       };
     }),
-  addAccessPermissionsToPage(pageName, holderType, permissions) {
+  addAccessPermissionsToPage(pageName, entityType, permissions) {
     set((state) => {
-      let holderArray = state.pages[pageName].access[holderType];
+      let holderArray = state.pages[pageName].access[entityType];
       permissions.forEach((permission) => {
         let elementIndex = holderArray.findIndex(
           (element) => element.id === permission.id
@@ -115,7 +115,7 @@ export const usePagesStore = create<IPageStore>((set) => ({
             ...state.pages[pageName],
             access: {
               ...state.pages[pageName].access,
-              [holderType]: holderArray,
+              [entityType]: holderArray,
             },
           },
         },
