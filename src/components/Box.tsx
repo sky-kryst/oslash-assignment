@@ -11,8 +11,8 @@ export const Box = ({ children, className, passive }: IProps) => {
         `w-full flex justify-between items-center px-2 ${
           !!passive ? "bg-gray-50" : "bg-white"
         }` +
-          " " +
-          className ?? ""
+        " " +
+        (className ?? "")
       }
     >
       {children}
