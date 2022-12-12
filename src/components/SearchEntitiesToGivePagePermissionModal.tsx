@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { EmptyBoxSVG, QuestionSVG } from "../assets/SVGs";
+import { PopoverContext } from "../context";
 import { useKeyPress } from "../hooks";
 import {
   TGroup,
@@ -23,7 +24,6 @@ import { Card } from "./Card";
 import { Input } from "./Input";
 import { List } from "./List";
 import { PagePermissionsDropdown } from "./PagePermissionsDropdown";
-import { PopoverContext } from "./Popover";
 import { Tag } from "./Tag";
 
 interface IProps {
