@@ -1,19 +1,11 @@
 import React, { cloneElement, useContext, useState } from "react";
+import { PopoverContext } from "../context";
 import { useKeyPress } from "../hooks";
 
 interface ITargetProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   triggerEvent?: string;
 }
-interface TPopoverContext {
-  isVisible: boolean;
-  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const PopoverContext = React.createContext<TPopoverContext>({
-  isVisible: false,
-  setIsVisible: () => {},
-});
 
 export const Popover = ({ children }: IPopoverProps) => {
   const [isVisible, setIsVisible] = useState(false);
