@@ -108,17 +108,19 @@ export const ShareModal: React.FC<IProps> = ({ pageName }) => {
             <Switch />
           </Box>
           <Divider />
-          <Box className="h-fit max-h-48">
-            <div className="w-full h-full flex flex-col">
+          <Box className="">
+            <div className="max-h-60 w-full flex flex-col">
               <Popover.Target triggerEvent="onFocus">
                 <Input
                   title="Team Search"
                   placeholder="People, emails, groups"
-                  rightButton={<Button type="secondary" label="Invite" />}
+                  rightButton={
+                    <Button type="secondary" label="Invite" size="lg" />
+                  }
                   containerClasses="my-3"
                 />
               </Popover.Target>
-              <div className="h-fit w-full">
+              <div className="overflow-y-auto w-full">
                 {authenticatedWorkspaces.map((workspace) => (
                   <List.Item
                     highlightOnHover={false}
