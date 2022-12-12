@@ -117,7 +117,7 @@ export const ShareModal: React.FC<IProps> = ({ pageName }) => {
                   rightButton={
                     <Button type="secondary" label="Invite" size="lg" />
                   }
-                  containerClasses="my-3"
+                  containerClasses="my-3 min-h-[40px]"
                 />
               </Popover.Target>
               <div className="overflow-y-auto w-full">
