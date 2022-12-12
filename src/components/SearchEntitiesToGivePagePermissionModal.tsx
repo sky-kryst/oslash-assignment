@@ -319,7 +319,7 @@ export const SearchEntitiesToGivePagePermissionModal: React.FC<IProps> = ({
           <Button
             label="learn about sharing"
             leftIcon={<QuestionSVG className="w-5 h-5" />}
-            type="flat"
+            flat
             size="sm"
           />
           <div></div>

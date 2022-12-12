@@ -201,10 +201,16 @@ export const ShareModal: React.FC<IProps> = ({ pageName }) => {
             <Button
               label="learn about sharing"
               leftIcon={<QuestionSVG className="w-5 h-5" />}
-              type="flat"
+              flat
               size="sm"
             />
-            <Button label="Copy link" leftIcon={<LinkSVG />} type="secondary" />
+            <Button
+              label="Copy link"
+              leftIcon={<LinkSVG />}
+              type="secondary"
+              flat
+              size="sm"
+            />
           </Box>
         </div>
       </Card>
