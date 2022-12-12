@@ -193,7 +193,7 @@ export const SearchEntitiesToGivePagePermissionModal: React.FC<IProps> = ({
   return (
     <Card>
       <div className="w-100 flex flex-col justify-start items-stretch">
-        <Box passive className="h-min-12 justify-between px-4">
+        <Box passive className="h-14 justify-between px-4">
           <div className="flex flex-col justify-evenly h-max w-[55%]">
             {selectedEntities.length ? (
               <div className="flex flex-wrap w-full h-fit mt-1.5">
@@ -237,6 +237,7 @@ export const SearchEntitiesToGivePagePermissionModal: React.FC<IProps> = ({
             type="secondary"
             label="Invite"
             onClick={addEntitiesToPagePermissions}
+            size="sm"
           />
         </Box>
         {people.length || groups.length ? (
