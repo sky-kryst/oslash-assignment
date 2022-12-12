@@ -6,6 +6,7 @@ interface IProps {
   type?: "primary" | "outlined" | "secondary" | "flat";
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  size?: "sm" | "md" | "lg";
 }
 
 export const Button: React.FC<IProps> = ({
@@ -16,16 +17,23 @@ export const Button: React.FC<IProps> = ({
   onClick,
   type = "primary",
   disabled,
+  size = "md",
 }) => {
   return (
     <button
       {...{ type: buttonType, onClick: disabled ? undefined : onClick }}
       className={`
-      px-4 py-2 rounded-md text-sm flex justify-evenly items-center
+      px-4 py-2 rounded-md text-sm flex justify-evenly items-center 
     ${type === "primary" ? `bg-black text-neutral-50` : ""}
     ${
       type === "secondary"
-        ? `border border-zinc-300 bg-slate-50 text-slate-700 font-semibold`
+        ? `border border-zinc-300 bg-neutral-50 text-slate-700 font-semibold ${
+            size === "sm"
+              ? "h-9 px-3"
+              : size === "lg"
+              ? "h-12 w-18 text-base"
+              : ""
+          }`
         : ""
     }
     ${
@@ -35,7 +43,13 @@ export const Button: React.FC<IProps> = ({
     }
     ${
       type === "flat"
-        ? `text-gray-500 font-medium px-2 py-1
+        ? `text-gray-500 font-medium px-2 py-1 ${
+            size === "sm"
+              ? "px-1.5 py-0.5"
+              : size === "lg"
+              ? "h-12 w-18 text-base"
+              : ""
+          } 
            hover:bg-stone-200`
         : ""
     }
