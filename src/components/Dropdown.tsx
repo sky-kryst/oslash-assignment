@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ChevronDownSVG } from "../assets/SVGs";
+import { PopoverContext } from "../context";
 import { Card } from "./Card";
-import { Popover, PopoverContext } from "./Popover";
+import { Popover } from "./Popover";
 
 interface IOptionsProps<GOption> {
   options: Array<GOption>;
