@@ -315,11 +315,12 @@ export const SearchEntitiesToGivePagePermissionModal: React.FC<IProps> = ({
             </div>
           </Box>
         )}
-        <Box passive className="h-8">
+        <Box passive className="h-9">
           <Button
             label="learn about sharing"
             leftIcon={<QuestionSVG className="w-5 h-5" />}
             type="flat"
+            size="sm"
           />
           <div></div>
         </Box>
